@@ -25,6 +25,7 @@
  */
 
 #include <stdio.h>
+#define PY_SSIZE_T_CLEAN
 #include "Python.h"
 #include "portaudio.h"
 #include "_portaudiomodule.h"
@@ -1291,7 +1292,7 @@ int _stream_callback_cfunction(const void *input, void *output,
   PyObject *py_status_flags = PyLong_FromUnsignedLong(statusFlags);
   PyObject *py_input_data = Py_None;
   const char *pData;
-  unsigned output_len;
+  Py_ssize_t output_len;
   PyObject *py_result;
 
   if (input) {
